@@ -24,7 +24,8 @@ public class VivaldiBrowserSource : IBrowserSource
 
     public void Open(string url, bool privateMode = false)
     {
-        var directory = Path.GetDirectoryName(BrowserExecutable);
+        var executablePath = System.Environment.ExpandEnvironmentVariables(BrowserExecutable);
+        var directory = Path.GetDirectoryName(executablePath);
 
         if (directory is null)
         {
@@ -32,15 +33,15 @@ public class VivaldiBrowserSource : IBrowserSource
             return;
         }
 
-        var fileName = Path.GetFileName(BrowserExecutable);
-
         if (privateMode)
         {
-            Helper.OpenInShell($@".\{fileName}", workingDir: directory, arguments: $"{url} --incognito");
+            // for some reason it cannot create the process with the filename .\ start so we use the actual path
+            Helper.OpenInShell($@"{executablePath}", workingDir: directory, arguments: $"{url} --incognito");
         }
         else
         {
-            Helper.OpenInShell($@".\{fileName}", workingDir: directory, arguments: url);
+            // for some reason it cannot create the process with the filename .\ start so we use the actual path
+            Helper.OpenInShell($@"{executablePath}", workingDir: directory, arguments: url);
         }
     }
 }
