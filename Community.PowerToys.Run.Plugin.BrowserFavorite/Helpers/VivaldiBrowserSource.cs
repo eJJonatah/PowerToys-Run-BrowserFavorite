@@ -11,7 +11,7 @@ public class VivaldiBrowserSource : IBrowserSource
 {
     public VivaldiBrowserSource()
     {
-        DefaultExecutablePath = @"%APPDATA%\..\Local\Vivaldi\Application\vivaldi.exe";
+        DefaultExecutablePath = @"%LOCALAPPDATA%\Vivaldi\Application\vivaldi.exe";
         BrowserExecutable = DefaultExecutablePath;
         FavoriteProvider = new VivaldiFavoriteProvider();
     }

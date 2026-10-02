@@ -8,7 +8,7 @@ namespace Community.PowerToys.Run.Plugin.BrowserFavorite.Helpers;
 public class VivaldiFavoriteProvider : ChromiumFavoriteProvider
 {
     private static readonly string Path =
-        Environment.ExpandEnvironmentVariables(@"%LOCALAPPDATA%\Google\Vivaldi\User Data\Default\Bookmarks");
+        Environment.ExpandEnvironmentVariables(@"%LOCALAPPDATA%\Vivaldi\User Data\Default\Bookmarks");
 
     public VivaldiFavoriteProvider()
         : base(Path)
